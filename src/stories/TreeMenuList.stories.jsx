@@ -1,3 +1,4 @@
+import React, { useState} from 'react';
 import { fn } from '@storybook/test';
 import { TreeMenuList } from '../components/tree-menu-list/TreeMenuList';
 
@@ -18,7 +19,7 @@ const options = [
 const initialOption = { index: "2.1", label: "Suboption 2.1"};
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
-export default {
+const meta = {
   title: 'Example/TreeMenuList',
   component: TreeMenuList,
   parameters: {
@@ -31,6 +32,18 @@ export default {
   // Use `fn` to spy on the onClick arg, which will appear in the actions panel once invoked: https://storybook.js.org/docs/essentials/actions#action-args
   args: { options: options, selectedOption: initialOption, onChange: fn() },
 };
+export default meta;
+
+// Implementation of a template to simulate the selection change in case of onChange
+const TreeMenuListTemplate = (args) => {
+  const [selectedOption, setSelectedOption] = useState(args.selectedOption)
+  return <TreeMenuList selectedOption={selectedOption} onChange={setSelectedOption} options={args.options}/>
+}
+
+export const TreeMenuListStory = {
+  name: "Default",
+  render: (args) => <TreeMenuListTemplate {...args} />
+ }
 
 // More on writing stories with args: https://storybook.js.org/docs/writing-stories/args
 export const HelloPrimary = {

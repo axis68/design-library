@@ -20,6 +20,9 @@ function findOptionsContaining(options, particularOption) {
   }, []);
 }
 
+/** The TreeMenuList component provides a hierarchical list of options for selection. 
+  * Each option may include a nested list of sub-options, 
+  * allowing for flexible, multi-level structures. */
 export const TreeMenuList = ({ options, selectedOption, onChange }) => {
   const [expandedOptions, setExpandedOptions] = useState([]);
 
@@ -58,6 +61,7 @@ export const TreeMenuList = ({ options, selectedOption, onChange }) => {
 };
 
 TreeMenuList.propTypes = {
+  /** List of available options */
   options: PropTypes.arrayOf(PropTypes.shape(optionShape)),
   selectedOption: PropTypes.shape(optionShape),
   onChange: PropTypes.func,
