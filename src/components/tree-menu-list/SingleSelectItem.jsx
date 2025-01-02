@@ -4,7 +4,7 @@ import optionShape from './optionTypes';
 import ToggleButton from '../toggle-button/ToggleButton';
 import './SingleSelectItem.css';
 
-function SingleSelectitem({
+function SingleSelectItem({
   option,
   selectedOption,
   clickHandler,
@@ -17,7 +17,7 @@ function SingleSelectitem({
       return null;
     }
     return subOptions.map((subOption) => (
-      <SingleSelectitem
+      <SingleSelectItem
         key={subOption.index}
         option={subOption}
         selectedOption={selectedOption}
@@ -81,7 +81,7 @@ function SingleSelectitem({
   );
 }
 
-SingleSelectitem.propTypes = {
+SingleSelectItem.propTypes = {
   option: PropTypes.shape(optionShape),
   selectedOption: PropTypes.shape(optionShape),
   clickHandler: PropTypes.func.isRequired,
@@ -90,4 +90,4 @@ SingleSelectitem.propTypes = {
   level: PropTypes.number,
 };
 
-export default SingleSelectitem;
+export default SingleSelectItem;

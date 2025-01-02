@@ -5,7 +5,7 @@ import viteLogo from '/vite.svg';
 import TreeMenuList from './tree-menu-list/TreeMenuList';
 
 // import './App.css';
-import './styles/index.css';
+import './tailwind.css';
 
 const options = [
   { index: "1", label: "Option 1"},

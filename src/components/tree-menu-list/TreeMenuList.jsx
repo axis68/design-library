@@ -1,8 +1,7 @@
-import PropTypes from 'prop-types';
 import React, { useState, useEffect } from 'react';
-import optionShape from './optionTypes';
-import SingleSelectitem from './SingleSelectItem';
-import './TreeMenuList.css';
+import PropTypes from 'prop-types';
+import SingleSelectItem from './SingleSelectItem';
+import optionShape from './optionTypes';;
 
 optionShape.subOptions = PropTypes.arrayOf(PropTypes.shape(optionShape));
 
@@ -21,12 +20,8 @@ function findOptionsContaining(options, particularOption) {
   }, []);
 }
 
-function TreeMenuList({ options, selectedOption, onChange }) {
+export const TreeMenuList = ({ options, selectedOption, onChange }) => {
   const [expandedOptions, setExpandedOptions] = useState([]);
-
-  const clickHandler = (clickedOption) => {
-    onChange(clickedOption);
-  };
 
   const toggleExpandCollapseHandler = (toggleCollapseExpandOption) => {
     if (expandedOptions.find((opt) => opt.index === toggleCollapseExpandOption.index)) {
@@ -45,22 +40,22 @@ function TreeMenuList({ options, selectedOption, onChange }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return (
+ return (
     <div className="tree-menu-list">
       {options.map((option) => (
-        <SingleSelectitem
+        <SingleSelectItem
           key={option.index}
           option={option}
           selectedOption={selectedOption}
           expandedOptions={expandedOptions}
-          clickHandler={clickHandler}
+          clickHandler={onChange}
           toggleExpandCollapseHandler={toggleExpandCollapseHandler}
           level={0}
         />
       ))}
     </div>
   );
-}
+};
 
 TreeMenuList.propTypes = {
   options: PropTypes.arrayOf(PropTypes.shape(optionShape)),
@@ -68,4 +63,8 @@ TreeMenuList.propTypes = {
   onChange: PropTypes.func,
 };
 
-export default TreeMenuList;
+TreeMenuList.defaultProps = {
+  options: [],
+  selectedOption: {},
+  onChange: () => {},
+};
