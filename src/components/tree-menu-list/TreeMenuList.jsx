@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import SingleSelectItem from './SingleSelectItem';
-import optionShape from './optionTypes';;
+import optionShape from './optionTypes';
 
 optionShape.subOptions = PropTypes.arrayOf(PropTypes.shape(optionShape));
 

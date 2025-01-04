@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import optionShape from './optionTypes';
 import ToggleButton from '../toggle-button/ToggleButton';
 import './SingleSelectItem.css';
+import '../../tailwind.css';
 
 function SingleSelectItem({
   option,
@@ -47,6 +48,8 @@ function SingleSelectItem({
   const hierarchyIndent = `${level * 20 + 10}px`;
   const isSelected = option?.index === selectedOption?.index;
 
+  const labelClass = `font-mono${isSelected ? ' font-bold' : ''}`;
+
   return (
     <>
       <div
@@ -63,7 +66,7 @@ function SingleSelectItem({
           onKeyDown={() => {}}
           onFocus={() => {}}
         >
-          <p>
+          <p class={labelClass}>
             {option?.subOptions?.length > 0 && (
               <ToggleButton
                 isExpanded={isCurrentNodeExpanded()}
