@@ -1,7 +1,8 @@
 import PropTypes from 'prop-types';
 import './ToggleButton.css';
 
-function ToggleButton({ isExpanded, onClick }) {
+/** The ToggleButton component switches between a status 'collapsed' and 'expanded' */
+export const ToggleButton = ({ isExpanded, onClick }) => {
     return (
       <span
         className="toggle-button"
@@ -23,6 +24,11 @@ function ToggleButton({ isExpanded, onClick }) {
   ToggleButton.propTypes = {
     isExpanded: PropTypes.bool,
     onClick: PropTypes.func,
+  };
+
+  ToggleButton.defaultProps = {
+    isExpanded: false,
+    onClick: () => {},
   };
 
   export default ToggleButton;
