@@ -4,19 +4,23 @@ import React, {
   } from 'react';
 import PropTypes from 'prop-types';
 
-function Pill({ onBoundingChange, text }) {
+function Pill({ pillKey, label, onBoundingChange}) {
     const myRef = useRef();
 
     useLayoutEffect(() => {
-        onBoundingChange(text, myRef.current.getBoundingClientRect());
+        onBoundingChange(pillKey, myRef.current.getBoundingClientRect());
     }, []);
 
-    return <div className="font-mono whitespace-nowrap" ref={myRef}>{text}</div>;
+    return (<div className="font-mono px-1 mx-0.5 border border-current 
+                rounded-full whitespace-nowrap" ref={myRef}>
+                {label}
+            </div>);
 }
 
 Pill.propTypes = {
+    pillKey: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
     onBoundingChange: PropTypes.func.isRequired,
-    text: PropTypes.string.isRequired,
 };
 
 export default Pill;
