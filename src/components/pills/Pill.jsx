@@ -9,7 +9,7 @@ function Pill({ pillKey, label, onBoundingChange}) {
 
     useLayoutEffect(() => {
         onBoundingChange(pillKey, myRef.current.getBoundingClientRect());
-    }, []);
+    }, [label]);
 
     return (<div className="font-mono px-1 mx-0.5 border border-current 
                 rounded-full whitespace-nowrap" ref={myRef}>

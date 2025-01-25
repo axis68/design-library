@@ -12,7 +12,7 @@ export const PillContainer= ({ pills }) => {
   const [windowWidth, setWindowWidth] = useState(0);  
   const containerRef = useRef();
   
-  const masterKey = pills.map(pill => pill.id).join("-");
+  const masterKey = `${pills.map(pill => pill.id).join("-")}-more`;
 
   const onPillBoundingChange = (id, rect) => {
     // Update the dictionary of pills's positions
