@@ -4,7 +4,7 @@ import React, {
   } from 'react';
 import PropTypes from 'prop-types';
 
-function Pill({ pillKey, label, onBoundingChange}) {
+const Pill = ({ pillKey, label, onBoundingChange}) => {
     const myRef = useRef();
 
     useLayoutEffect(() => {
